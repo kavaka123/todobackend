@@ -6,3 +6,6 @@ venv
 
 #Ignore sqlite database files
 *.sqlite3
+
+#Ignore build artifacts inside target folder
+target
