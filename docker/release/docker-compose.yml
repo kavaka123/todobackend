@@ -32,9 +32,8 @@ test:
 
 
 nginx:
-  image: nginx
-  volumes:
-    - ./todobackend.conf:/etc/nginx/conf.d/todobackend.conf
+  build: .
+  dockerfile: Dockerfile.nginx
   links:
     - app  
   volumes_from:
@@ -63,12 +62,11 @@ db:
 
 agent:
   image: avantaditya/ansible
-  volumes:
-    - ../../ansible/probe.yml:/ansible/site.yml
   links:
     - db
   environment:
     PROBE_HOST: "db"
-    PROBE_PORT: "3306"    
+    PROBE_PORT: "3306"   
+  command: ["probe.yml"]   
        
 

@@ -1,2 +1,5 @@
 #ignore venv folder from docker build context
 venv
+
+#Ignore test reports folder in docker build context
+reports

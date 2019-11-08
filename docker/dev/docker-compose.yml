@@ -17,23 +17,18 @@ builder:
   dockerfile: docker/dev/Dockerfile
   volumes_from:
     - cache
-  volumes:
-    - ../../target:/wheelhouse
   entrypoint: ["entrypoint.sh"]
   command: ["pip", "wheel", "--no-index", "-f /build", "."]
       
 
-
 agent:
   image: avantaditya/ansible
-  volumes:
-    - ../../ansible/probe.yml:/ansible/site.yml
   links:
     - db  
   environment:
     PROBE_HOST: "db"
     PROBE_PORT: "3306"  
-
+  command: ["probe.yml"]
 
 db:
   image: mysql:5.6

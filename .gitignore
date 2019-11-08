@@ -9,3 +9,4 @@ venv
 
 #Ignore build artifacts inside target folder
 target
+reports
